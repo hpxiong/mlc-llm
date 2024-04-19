@@ -200,7 +200,7 @@ class ChatCompletionRequest(BaseModel):
     """
 
     messages: List[ChatCompletionMessage]
-    model: str
+    model: str = 'default'
     frequency_penalty: float = 0.0
     presence_penalty: float = 0.0
     logprobs: bool = False

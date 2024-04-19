@@ -128,6 +128,10 @@ async def request_chat_completion(
     """
     # - Check the requested model.
     server_context: ServerContext = ServerContext.current()
+    if "model" not in request or request.model =='default':
+        dd = server_context.get_model_list()
+        request.model = dd[0]            
+    # print(request.model)
     async_engine = server_context.get_engine(request.model)
     if async_engine is None:
         return error_protocol.create_error_response(
